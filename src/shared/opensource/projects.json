@@ -1,11 +1,11 @@
 {
   "data": [
     {
-      "id": "R_kgDOJWL0-g",
-      "name": "mdp-diffusion",
-      "createdAt": "2023-04-13T04:18:19Z",
-      "url": "https://github.com/ashutosh1919/mdp-diffusion",
-      "description": "Text-guided image editing by manipulating diffusion path without any training.",
+      "id": "proj-llm-rpa",
+      "name": "Intelligent Document Processing with LLM-Driven RPA",
+      "createdAt": "2025-01-01T00:00:00Z",
+      "url": "#",
+      "description": "Engineered an innovative Robotic Process Automation (RPA) model integrating LLMs and OCR for enhanced document processing. Achieved 99% accuracy and reduced processing time by 94%. Automated LLM-Ops pipeline for continuous improvement.",
       "isFork": false,
       "languages": [
         {
@@ -13,35 +13,81 @@
           "iconifyClass": "logos-python"
         },
         {
-          "name": "Shell",
-          "iconifyClass": "simple-icons:shell"
+          "name": "C#",
+          "iconifyClass": "logos-csharp"
         },
         {
-          "name": "Jupyter Notebook",
-          "iconifyClass": "logos-jupyter"
+          "name": "RPA",
+          "iconifyClass": "mdi:robot"
+        },
+        {
+          "name": "OCR",
+          "iconifyClass": "mdi:image-filter"
         }
       ]
     },
     {
-      "id": "R_kgDOG_vYHA",
-      "name": "explainable-cnn",
-      "createdAt": "2022-03-13T20:41:33Z",
-      "url": "https://github.com/ashutosh1919/explainable-cnn",
-      "description": "📦 PyTorch based visualization package for generating layer-wise explanations for CNNs.",
+      "id": "proj-airbnb-clone",
+      "name": "Airbnb Clone",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "url": "#",
+      "description": "Built a responsive UI inspired by Airbnb. Implemented reservation scheduler, calendar, CRUD operations, Cloudinary integration, and custom search API.",
       "isFork": false,
       "languages": [
         {
-          "name": "Python",
-          "iconifyClass": "logos-python"
+          "name": "React.js",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "Node.js",
+          "iconifyClass": "logos-nodejs"
+        },
+        {
+          "name": "MongoDB",
+          "iconifyClass": "logos-mongodb"
+        },
+        {
+          "name": "Cloudinary",
+          "iconifyClass": "mdi:cloud"
         }
       ]
     },
     {
-      "id": "MDEwOlJlcG9zaXRvcnkyNDU0NjcyNzQ=",
-      "name": "masterPortfolio",
-      "createdAt": "2020-03-06T16:26:54Z",
-      "url": "https://github.com/ashutosh1919/masterPortfolio",
-      "description": "🔥 The Complete Customizable Software Developer Portfolio Template which lets you showcase your work and provides each and every detail about you as Software Developer.",
+      "id": "proj-restaurant-ordering",
+      "name": "Restaurant Ordering Website",
+      "createdAt": "2024-01-01T00:00:00Z",
+      "url": "#",
+      "description": "Designed and deployed a full-featured food ordering system with modern UI, dynamic menu, CRUD, admin dashboard, real-time tracking, and secure authentication.",
+      "isFork": false,
+      "languages": [
+        {
+          "name": "Next.js",
+          "iconifyClass": "logos-nextjs"
+        },
+        {
+          "name": "React.js",
+          "iconifyClass": "logos-react"
+        },
+        {
+          "name": "Tailwind",
+          "iconifyClass": "logos-tailwindcss"
+        },
+        {
+          "name": "MongoDB",
+          "iconifyClass": "logos-mongodb"
+        },
+        {
+          "name": "NestJS",
+          "iconifyClass": "logos-nestjs"
+        }
+      ]
+    },
+    {
+      "id": "proj-immigration-agency",
+      "name": "Immigration Agency Website",
+      "createdAt": "2023-01-01T00:00:00Z",
+      "url": "#",
+      "description": "Developed a static website simulating an Australian immigration agency. Clean HTML/CSS design, backend APIs for form submission and data handling.",
       "isFork": false,
       "languages": [
         {
@@ -57,66 +103,30 @@
           "iconifyClass": "logos-javascript"
         },
         {
-          "name": "Dockerfile",
-          "iconifyClass": "simple-icons:docker"
+          "name": "MySQL",
+          "iconifyClass": "logos-mysql"
         }
       ]
     },
     {
-      "id": "R_kgDOG0_8uQ",
-      "name": "react-awesome-shapes",
-      "createdAt": "2022-02-11T14:50:20Z",
-      "url": "https://github.com/ashutosh1919/react-awesome-shapes",
-      "description": "🌀 Insert Awesome Shapes into Your React Site with Ease.",
-      "isFork": false,
-      "languages": [
-        {
-          "name": "HTML",
-          "iconifyClass": "logos-html-5"
-        },
-        {
-          "name": "CSS",
-          "iconifyClass": "logos-css-3"
-        },
-        {
-          "name": "Shell",
-          "iconifyClass": "simple-icons:shell"
-        },
-        {
-          "name": "JavaScript",
-          "iconifyClass": "logos-javascript"
-        }
-      ]
-    },
-    {
-      "id": "R_kgDOGcPKSQ",
-      "name": "neuro-symbolic-sudoku-solver",
-      "createdAt": "2021-11-26T17:56:07Z",
-      "url": "https://github.com/ashutosh1919/neuro-symbolic-sudoku-solver",
-      "description": "⚙️ Solving sudoku using Deep Reinforcement learning in combination with powerful symbolic representations.",
+      "id": "proj-smart-ordering-table",
+      "name": "Smart Ordering Table",
+      "createdAt": "2025-01-01T00:00:00Z",
+      "url": "#",
+      "description": "Developed smart ordering features using tangible user interfaces, gesture recognition, augmented reality, and eye gaze tracking for heatmap analysis.",
       "isFork": false,
       "languages": [
         {
           "name": "Python",
           "iconifyClass": "logos-python"
-        }
-      ]
-    },
-    {
-      "id": "MDEwOlJlcG9zaXRvcnkzMjU5NDM1MTE=",
-      "name": "react-liquidswipe",
-      "createdAt": "2021-01-01T08:31:51Z",
-      "url": "https://github.com/ashutosh1919/react-liquidswipe",
-      "description": "🚀 Smooth Liquid Swipe Animation to transition between different components.",
-      "isFork": false,
-      "languages": [
-        {
-          "name": "JavaScript",
-          "iconifyClass": "logos-javascript"
         },
         {
-          "name": "CSS",
-          "iconifyClass": "logos-css-3"
+          "name": "C#",
+          "iconifyClass": "logos-csharp"
+        },
+        {
+          "name": "Firebase",
+          "iconifyClass": "logos-firebase"
         }
       ]
     }
