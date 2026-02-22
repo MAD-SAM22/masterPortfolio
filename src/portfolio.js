@@ -692,25 +692,62 @@ const publicationsHeader = {
 const publications = {
   data: [
     {
-      id: "neuro-symbolic-sudoku-solver",
-      name: "Neuro-Symbolic Sudoku Solver",
-      createdAt: "2023-07-02T00:00:00Z",
-      description: "Paper published in KDD KiML 2023",
-      url: "https://arxiv.org/abs/2307.00653",
+      id: "IMenu",
+      name:
+        "IMenu: A Smart Table Interface Combining TUIs, Gestures, AR, Eye-Gaze, and Emotion Recognition",
+      createdAt: "2025-10-01T00:00:00Z",
+      description:
+        "published In Conference: 2025 7th Novel Intelligent and Leading Emerging Sciences Conference (NILES)",
+      url:
+        "https://www.researchgate.net/publication/397635702_IMenu_A_Smart_Table_Interface_Combining_TUIs_Gestures_AR_Eye-Gaze_and_Emotion_Recognition",
     },
     {
-      id: "mdp-diffusion",
-      name: "MDP-Diffusion",
-      createdAt: "2023-09-19T00:00:00Z",
-      description: "Blog published in Paperspace",
-      url: "https://blog.paperspace.com/mdp-diffusion/",
+      id: "LLM-Ops-and-Ensemble-Intelligence",
+      name:
+        "LLM-Ops and Ensemble Intelligence for Robust LLM Performance: Integrating Fine-Tuning and Majority Voting",
+      createdAt: "2025-10-01T00:00:00Z",
+      description:
+        "published In Conference: 2025 IEEE/ACS 22nd International Conference on Computer Systems and Applications (AICCSA)",
+      url:
+        "https://www.researchgate.net/publication/399468850_LLM-Ops_and_Ensemble_Intelligence_for_Robust_LLM_Performance_Integrating_Fine-Tuning_and_Majority_Voting",
     },
     {
-      id: "consistency-models",
-      name: "Consistency Models",
-      createdAt: "2023-10-12T00:00:00Z",
-      description: "Blog published in Paperspace",
-      url: "https://blog.paperspace.com/consistency-models/",
+      id: "LLMOps-Driven",
+      name: "LLMOps-Driven Robotic Process Automation Approach",
+      createdAt: "2025-05-01T00:00:00Z",
+      description:
+        "published In Conference: 2025 Intelligent Methods, Systems, and Applications (IMSA)",
+      url:
+        "https://www.researchgate.net/publication/395825464_LLMOps-Driven_Robotic_Process_Automation_Approach",
+    },
+    {
+      id: "LMV-RPA",
+      name: "LMV-RPA: Large Model Voting-Based Robotic Process Automation",
+      createdAt: "2025-06-12T00:00:00Z",
+      description:
+        "published In book: Advances on Intelligent Computing and Data Science II",
+      url:
+        "https://www.researchgate.net/publication/393017533_LMV-RPA_Large_Model_Voting-Based_Robotic_Process_Automation",
+    },
+    {
+      id: "LMRPA",
+      name:
+        "LMRPA: Large Language Model-Driven Efficient Robotic Process Automation for OCR",
+      createdAt: "2025-07-12T00:00:00Z",
+      description:
+        "published In book: Advances on Intelligent Computing and Data Science II",
+      url:
+        "https://www.researchgate.net/publication/393904765_LMRPA_Large_Language_Model-Driven_Efficient_Robotic_Process_Automation_for_OCR",
+    },
+    {
+      id: "ERPA",
+      name:
+        "ERPA: Efficient RPA Model Integrating OCR and LLMs for Intelligent Document Processing",
+      createdAt: "2025-11-05T00:00:00Z",
+      description:
+        "published In Conference: 2024 International Mobile, Intelligent, and Ubiquitous Computing Conference (MIUCC)",
+      url:
+        "https://www.researchgate.net/publication/387120805_ERPA_Efficient_RPA_Model_Integrating_OCR_and_LLMs_for_Intelligent_Document_Processing",
     },
   ],
 };
