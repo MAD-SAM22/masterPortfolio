@@ -334,7 +334,7 @@ const competitiveSites = {
       style: {
         color: "#F79F1B",
       },
-      profileLink: "https://leetcode.com/layman_brother/",
+      profileLink: "https://leetcode.com/u/MAD-SAM22/",
     },
     {
       siteName: "HackerRank",
@@ -342,31 +342,15 @@ const competitiveSites = {
       style: {
         color: "#2EC866",
       },
-      profileLink: "https://www.hackerrank.com/layman_brother",
+      profileLink: "https://www.hackerrank.com/profile/osama_abdellati2",
     },
     {
-      siteName: "Codechef",
-      iconifyClassname: "simple-icons:codechef",
+      siteName: "Android",
+      iconifyClassname: "simple-icons:android",
       style: {
-        color: "#5B4638",
+        color: "green",
       },
-      profileLink: "https://www.codechef.com/users/ashutosh_1919",
-    },
-    {
-      siteName: "Codeforces",
-      iconifyClassname: "simple-icons:codeforces",
-      style: {
-        color: "#1F8ACB",
-      },
-      profileLink: "http://codeforces.com/profile/layman_brother",
-    },
-    {
-      siteName: "Hackerearth",
-      iconifyClassname: "simple-icons:hackerearth",
-      style: {
-        color: "#323754",
-      },
-      profileLink: "https://www.hackerearth.com/@ashutosh391",
+      profileLink: "https://developers.google.com/profile/u/OsamaAbdellatif",
     },
     {
       siteName: "Kaggle",
@@ -374,7 +358,7 @@ const competitiveSites = {
       style: {
         color: "#20BEFF",
       },
-      profileLink: "https://www.kaggle.com/laymanbrother",
+      profileLink: "https://www.kaggle.com/osamahosamabdellatif",
     },
   ],
 };
@@ -425,112 +409,67 @@ const degrees = {
 const certifications = {
   certifications: [
     {
-      title: "Machine Learning",
-      subtitle: "- Andrew Ng",
-      logo_path: "stanford_logo.png",
+      title: "Django Framework",
+      subtitle: "- ITI ",
+      logo_path: "iti_logo.png",
       certificate_link:
-        "https://www.coursera.org/account/accomplishments/verify/22MTSSC5WDTM",
-      alt_name: "Stanford University",
+        "https://1drv.ms/i/c/e714e11aff20c0aa/IQBvLLWQ0H4OT7-Uskcm1FMAAeQBLVsy3N5TZzYvLHyrmao?e=cm6r0w",
+      alt_name: "ITI Django Framework",
       color_code: "#8C151599",
     },
     {
-      title: "Deep Learning",
-      subtitle: "- Andrew Ng",
-      logo_path: "deeplearning_ai_logo.png",
-      certificate_link:
-        "https://www.coursera.org/account/accomplishments/specialization/H8CPSFXAJD2G",
-      alt_name: "deeplearning.ai",
-      color_code: "#00000099",
-    },
-    {
-      title: "ML on GCP",
-      subtitle: "- GCP Training",
-      logo_path: "google_logo.png",
-      certificate_link:
-        "https://www.coursera.org/account/accomplishments/specialization/EB4VJARK8647",
-      alt_name: "Google",
-      color_code: "#0C9D5899",
-    },
-    {
-      title: "Data Science",
-      subtitle: "- Alex Aklson",
-      logo_path: "ibm_logo.png",
-      certificate_link:
-        "https://www.coursera.org/account/accomplishments/specialization/PLEAPCSJBZT5",
-      alt_name: "IBM",
-      color_code: "#1F70C199",
-    },
-    {
-      title: "Big Data",
-      subtitle: "- Kim Akers",
+      title: "Data Fundamentals",
+      subtitle: "- Microsoft Azure",
       logo_path: "microsoft_logo.png",
       certificate_link:
-        "https://drive.google.com/file/d/164zKCFOsI4vGqokc-Qj-e_D00kLDHIrG/view",
-      alt_name: "Microsoft",
+        "https://www.credly.com/badges/fcb84c50-19d6-40a2-b895-5b77cc14d312",
+      alt_name: "Microsoft Azure",
       color_code: "#D83B0199",
     },
     {
-      title: "Advanced Data Science",
-      subtitle: "- Romeo Kienzler",
-      logo_path: "ibm_logo.png",
+      title: "AI Fundamentals",
+      subtitle: "- Microsoft Azure",
+      logo_path: "microsoft_logo.png",
       certificate_link:
-        "https://www.coursera.org/account/accomplishments/verify/BH2T9BRU87BH",
-      alt_name: "IBM",
-      color_code: "#1F70C199",
-    },
-    {
-      title: "Advanced ML on GCP",
-      subtitle: "- GCP Training",
-      logo_path: "google_logo.png",
-      certificate_link:
-        "https://www.coursera.org/account/accomplishments/verify/5JZZM7TNQ2AV",
-      alt_name: "Google",
+        "https://www.credly.com/badges/823e0a7a-e549-420e-9aa0-7ab477d4a54c",
+      alt_name: "Microsoft Azure",
       color_code: "#0C9D5899",
     },
     {
-      title: "DL on Tensorflow",
-      subtitle: "- Laurence Moroney",
-      logo_path: "deeplearning_ai_logo.png",
+      title: "Conference Speaker",
+      subtitle: "- Birmingham City University",
+      logo_path: "birmingham_city_university.png",
       certificate_link:
-        "https://www.coursera.org/account/accomplishments/verify/6T4DCUGNK8J8",
-      alt_name: "deeplearning.ai",
-      color_code: "#00000099",
+        "https://1drv.ms/i/c/e714e11aff20c0aa/IQB89aYLLiMBTayk44tsZRfHAdwOKC6XZylHwfQCkpk8Ggg?e=1vHWsC",
+      alt_name: "Birmingham City University",
+      color_code: "#0e1947",
     },
     {
-      title: "Fullstack Development",
-      subtitle: "- Jogesh Muppala",
-      logo_path: "coursera_logo.png",
+      title: "Competitive Programming ",
+      subtitle: "- ICPC",
+      logo_path: "icpc-logo.png",
       certificate_link:
-        "https://www.coursera.org/account/accomplishments/certificate/NRANJA66Y2YA",
-      alt_name: "Coursera",
-      color_code: "#2A73CC",
+        "https://1drv.ms/b/c/e714e11aff20c0aa/IQA5CCJWRebHTrrkf4pdit2gAcWfOEsQk2Z4rsPMmsOeb_8?e=6siheq",
+      alt_name: "ICPC",
+      color_code: "white",
     },
     {
-      title: "Kuberenetes on GCP",
-      subtitle: "- Qwiklabs",
-      logo_path: "gcp_logo.png",
+      title: "Deep Minds Event Completion",
+      subtitle: "- MSA University",
+      logo_path: "deep-mind.jpg",
       certificate_link:
-        "https://google.qwiklabs.com/public_profiles/e4d5a92b-faf6-4679-a70b-a9047c0cd750",
-      alt_name: "GCP",
-      color_code: "#4285F499",
+        "https://1drv.ms/b/c/e714e11aff20c0aa/IQBHYrmICQI9RI7llGRP8HlZAafsT3Ri5Zy34pMKfUSMrmU?e=ybf2Pn",
+      alt_name: "Deep Minds",
+      color_code: "#7c5f41",
     },
     {
-      title: "Cryptography",
-      subtitle: "- Saurabh Mukhopadhyay",
-      logo_path: "nptel_logo.png",
+      title: "Smart Universities Hackathon Competition",
+      subtitle: "- MSA University",
+      logo_path: "hackathon_logo.jpg",
       certificate_link:
-        "https://drive.google.com/open?id=1z5ExD_QJVdU0slLkp8CBqSF3-C3g-ro_",
-      alt_name: "NPTEL",
-      color_code: "#FFBB0099",
-    },
-    {
-      title: "Cloud Architecture",
-      subtitle: "- Qwiklabs",
-      logo_path: "gcp_logo.png",
-      certificate_link:
-        "https://google.qwiklabs.com/public_profiles/5fab4b2d-be6f-408c-8dcb-6d3b58ecb4a2",
-      alt_name: "GCP",
-      color_code: "#4285F499",
+        "https://1drv.ms/b/c/e714e11aff20c0aa/IQAACGhE0b0OSJ4zyBGEULPuAWkGcIVqAGWJKn1J7sdzHFA?e=l2asVh",
+      alt_name: "HACKATHON",
+      color_code: "#0e1947",
     },
   ],
 };
