@@ -46,15 +46,16 @@
 To view a live example, **[click here](https://ashutosh1919.github.io/)**
 
 # Table of Contents
- - [Clone and Use](#clone-and-use)
- - [Customizing](#customize-it-to-make-your-own-portfolio)
- - [Choose Theme](#choose-theme)
- - [Deployment](#deployment)
- - [Technologies Used](#technologies-used)
- - [Illustrations](#illustrations)
- - [License](#license)
- - [Contributors](#contributors)
- - [References](#references)
+
+- [Clone and Use](#clone-and-use)
+- [Customizing](#customize-it-to-make-your-own-portfolio)
+- [Choose Theme](#choose-theme)
+- [Deployment](#deployment)
+- [Technologies Used](#technologies-used)
+- [Illustrations](#illustrations)
+- [License](#license)
+- [Contributors](#contributors)
+- [References](#references)
 
 # Clone and Use 📋
 
@@ -63,7 +64,7 @@ To view a live example, **[click here](https://ashutosh1919.github.io/)**
 - In case you want to help developing it or simply saving it, you can fork the repository just by clicking the button on the top-right corner of this page
 - After the successful installation of `nodejs` and `npm`, clone the repository into your local system using below command:
   ```bash
-   git clone https://github.com/ashutosh1919/masterPortfolio.git
+   git clone https://github.com/MAD-SAM22/masterPortfolio.git
   ```
   This will clone the whole repository in your system.
 - To download required dependencies to your system, navigate to the directory where the cloned repository resides and execute following command:
@@ -197,9 +198,11 @@ Therefore, this part of portfolio is not customizable. But don't worry we have a
 - Also, keep in mind that your resume must be in A4 size.
 - Now, go to <a href="/src/pages/resume/Resume.js">/src/pages/resume/Resume.js</a>.
 - In the import section, find:
+
 ```
 import myResumePdf from "../../assets/docs/Ashutosh_Hathidara_Resume_ML.pdf"
 ```
+
 - and replace **"Ashutosh_Hathidara_Resume_ML.pdf"** with your resume file name.
 - Launch the project and go to the route `/resume` to view your resume.
 
