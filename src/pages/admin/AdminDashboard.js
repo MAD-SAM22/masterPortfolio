@@ -19,9 +19,12 @@ const fadeIn = keyframes`
 const DashboardContainer = styled.div`
   display: flex;
   min-height: 100vh;
+  width: 100vw;
   background-color: #f8fafc;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
+  margin: 0;
+  padding: 0;
 `;
 
 const Sidebar = styled.div`
@@ -124,11 +127,14 @@ const SeedButton = styled.button`
 `;
 
 const LoginFormContainer = styled.div`
+  width: 100vw;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  margin: 0;
+  padding: 0;
 `;
 
 const LoginCard = styled.div`
