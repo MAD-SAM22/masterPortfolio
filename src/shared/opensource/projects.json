@@ -5,7 +5,12 @@
       "name": "Intelligent Document Processing with LLM-Driven RPA",
       "createdAt": "2025-01-01T00:00:00Z",
       "url": "#",
-      "description": "Engineered an innovative Robotic Process Automation (RPA) model integrating LLMs and OCR for enhanced document processing. Achieved 99% accuracy and reduced processing time by 94%. Automated LLM-Ops pipeline for continuous improvement.",
+      "repoUrl": "https://github.com/MAD-SAM22",
+      "description": "Engineered an innovative Robotic Process Automation (RPA) model integrating LLMs and OCR for enhanced document processing. Achieved 99% accuracy and reduced processing time by 94%. Automated LLM-Ops pipeline for continuous improvement.\n\nThe system processes documents through a sophisticated pipeline that combines optical character recognition with large language model analysis. This approach enables intelligent extraction and classification of document content with minimal human intervention.",
+      "images": [
+        "projects_image.svg",
+        "developerActivity.svg"
+      ],
       "isFork": false,
       "languages": [
         {
@@ -31,7 +36,12 @@
       "name": "Airbnb Clone",
       "createdAt": "2024-01-01T00:00:00Z",
       "url": "#",
-      "description": "Built a responsive UI inspired by Airbnb. Implemented reservation scheduler, calendar, CRUD operations, Cloudinary integration, and custom search API.",
+      "repoUrl": "https://github.com/MAD-SAM22",
+      "description": "Built a responsive UI inspired by Airbnb. Implemented reservation scheduler, calendar, CRUD operations, Cloudinary integration, and custom search API.\n\nThe application features a modern, intuitive interface that replicates the core experience of the popular accommodation platform, with additional custom features tailored for seamless property listing and booking management.",
+      "images": [
+        "projects_image.svg",
+        "fullstack.svg"
+      ],
       "isFork": false,
       "languages": [
         {
@@ -57,7 +67,12 @@
       "name": "Restaurant Ordering Website",
       "createdAt": "2024-01-01T00:00:00Z",
       "url": "#",
-      "description": "Designed and deployed a full-featured food ordering system with modern UI, dynamic menu, CRUD, admin dashboard, real-time tracking, and secure authentication.",
+      "repoUrl": "https://github.com/MAD-SAM22",
+      "description": "Designed and deployed a full-featured food ordering system with modern UI, dynamic menu, CRUD, admin dashboard, real-time tracking, and secure authentication.\n\nCustomers can browse menus, place orders, and track delivery in real-time while restaurant staff manage orders through an intuitive admin panel.",
+      "images": [
+        "projects_image.svg",
+        "developerActivity.svg"
+      ],
       "isFork": false,
       "languages": [
         {
@@ -87,7 +102,11 @@
       "name": "Immigration Agency Website",
       "createdAt": "2023-01-01T00:00:00Z",
       "url": "#",
-      "description": "Developed a static website simulating an Australian immigration agency. Clean HTML/CSS design, backend APIs for form submission and data handling.",
+      "repoUrl": "https://github.com/MAD-SAM22",
+      "description": "Developed a static website simulating an Australian immigration agency. Clean HTML/CSS design, backend APIs for form submission and data handling.\n\nThe site provides clear information architecture for visa services and streamlined form submission with proper validation and backend processing.",
+      "images": [
+        "projects_image.svg"
+      ],
       "isFork": false,
       "languages": [
         {
@@ -113,7 +132,13 @@
       "name": "Smart Ordering Table",
       "createdAt": "2025-01-01T00:00:00Z",
       "url": "#",
-      "description": "Developed smart ordering features using tangible user interfaces, gesture recognition, augmented reality, and eye gaze tracking for heatmap analysis.",
+      "repoUrl": "https://github.com/MAD-SAM22",
+      "description": "Developed smart ordering features using tangible user interfaces, gesture recognition, augmented reality, and eye gaze tracking for heatmap analysis.\n\nThis research project combines multiple interaction modalities to create an intuitive dining experience. The system analyzes user behavior through eye gaze heatmaps to optimize menu placement and interaction flow.",
+      "images": [
+        "projects_image.svg",
+        "googleAssistant.svg",
+        "developerActivity.svg"
+      ],
       "isFork": false,
       "languages": [
         {

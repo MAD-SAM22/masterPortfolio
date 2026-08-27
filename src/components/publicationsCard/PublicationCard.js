@@ -1,11 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import "./PublicationCard.css";
 import { Fade } from "react-reveal";
 
 export default function PublicationCard({ pub, theme }) {
-  function openPubinNewTab(url) {
-    var win = window.open(url, "_blank");
-    win.focus();
+  const history = useHistory();
+
+  function handleClick() {
+    if (pub.id) {
+      history.push(`/project/publication/${pub.id}`);
+    } else if (pub.url) {
+      window.open(pub.url, "_blank");
+    }
   }
 
   return (
@@ -14,7 +20,7 @@ export default function PublicationCard({ pub, theme }) {
       style={{ backgroundColor: theme.highlight }}
     >
       <Fade bottom duration={2000} distance="40px">
-        <div key={pub.id} onClick={() => openPubinNewTab(pub.url)}>
+        <div key={pub.id} onClick={handleClick} style={{ cursor: "pointer" }}>
           <div className="publication-name-div">
             <p className="publication-name" style={{ color: theme.text }}>
               {pub.name}

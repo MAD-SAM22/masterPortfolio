@@ -1,6 +1,6 @@
 import React from "react";
 import "./SocialMedia.css";
-import { socialMediaLinks } from "../../portfolio";
+import { usePortfolioData } from "../../context/PortfolioDataContext";
 import styled from "styled-components";
 
 const IconWrapper = styled.span`
@@ -13,7 +13,9 @@ const IconWrapper = styled.span`
   }
 `;
 
-export default function socialMedia(props) {
+export default function SocialMedia(props) {
+  const { portfolioData } = usePortfolioData();
+  const socialMediaLinks = portfolioData?.socialMediaLinks || [];
   return (
     <div className="social-media-div">
       {socialMediaLinks.map((media, i) => {

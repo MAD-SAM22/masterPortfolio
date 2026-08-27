@@ -67,6 +67,17 @@ body {
 :root {
   --scrollbar-color: white; /* it will change when the page loads*/
 }
+
+/* Ensure root creates proper stacking context (BaseUI recommendation) */
+#root {
+  isolation: isolate;
+  min-height: 100%;
+}
+
+/* Fix: react-reveal can block clicks; ensure interactive elements receive pointer events */
+.react-reveal {
+  pointer-events: auto !important;
+}
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-color) transparent;

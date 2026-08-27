@@ -1,55 +1,103 @@
 {
-	"title": "Experience",
-	"subtitle": "Work, Internship and Volunteership",
-	"description":
-		"I have worked with many evolving startups as ML and DL Developer, Designer and Software Architect. I have also worked with some well established companies mostly as AI Developer. I love organising events and that is why I am also involved with many opensource communities as a representative.",
-	"header_image_path": "experience.svg",
-	"sections": [
-		{
-			"title": "Work",
-			"experiences": [
-				{
-					"title": "Android and ML Developer",
-					"company": "Muffito Incorporation",
-					"company_url": "https://www.linkedin.com/company/muffito-inc/about/",
-					"logo_path": "muffito_logo.png",
-					"duration": "May 2018 - Oct 2018",
-					"location": "Pune, Maharashtra",
-					"description":
-						"I have created complete Android Application for locating Pub, Bar and beverage shops around you. I have also worked on implementation of algorithms for Face Detection, Text extraction from Image. I was involved in a team for creating complete software architecure of mobile and web application as well as admin panel for company.",
-					"color": "#9b1578"
-				},
-				{
-					"title": "Android Developer",
-					"company": "FreeCopy Pvt. Ltd.",
-					"company_url": "https://www.linkedin.com/company/freecopy/about/",
-					"logo_path": "freecopy_logo.png",
-					"duration": "Nov 2017 - Dec 2017",
-					"location": "Ahmedabad, Gujarat",
-					"description":
-						"FreeCopy is the Start up from Indian Institute of Management, Ahmedabad. I have changed the integration of the whole app from Google to Firebase. I learnt the efﬁcient ways of Data communications like Retroﬁt, Eventbus etc. I experienced the real time start up. I learnt the Design thinking of UI on perspective of People.",
-					"color": "#fc1f20"
-				}
-			]
-		},
-		{
-			"title": "Internships",
-			"experiences": [
-				{
-					"title": "Data Science Research Intern",
-					"company": "Delhivery Pvt. Ltd.",
-					"company_url": "https://www.delhivery.com/",
-					"logo_path": "delhivery_logo.png",
-					"duration": "May 2019 - Sept 2019",
-					"location": "Gurgaon, Haryana",
-					"description": "I have worked on project of predicting freight rates based on previous data. There were two objectives: (1) To build a forecasting engine to predict daily freight rates. (2) To embed feature in the model which can explain the seasonal major changes in freight rate based on regions and locations. I have closely worked with deep learning models in combination with statistical methods to create solution for this. At the end of internship, I had created model deployed on AWS EC2 with the use of Kafka stream jobs, ElasticSearch and PostgreSQL.",
-					"color": "#ee3c26"
-				}
-			]
-		},
-		{
-			"title": "Volunteerships",
-			"experiences": []
-		}
-	]
+  "description": "I have worked with many evolving startups as ML and DL Developer, Designer and Software Architect. I have also worked with some well established companies mostly as AI Developer. I love organising events and that is why I am also involved with many opensource communities as a representative.",
+  "header_image_path": "experience.svg",
+  "sections": [
+    {
+      "title": "Work",
+      "experiences": [
+        {
+          "title": "Android and ML Developer",
+          "company": "Muffito Incorporation",
+          "company_url": "https://www.linkedin.com/company/muffito-inc/about/",
+          "logo_path": "muffito_logo.png",
+          "duration": "May 2018 - Oct 2018",
+          "location": "Pune, Maharashtra",
+          "description": "I have created complete Android Application for locating Pub, Bar and beverage shops around you. I have also worked on implementation of algorithms for Face Detection, Text extraction from Image. I was involved in a team for creating complete software architecure of mobile and web application as well as admin panel for company.",
+          "color": "#9b1578"
+        },
+        {
+          "title": "Android Developer",
+          "company": "FreeCopy Pvt. Ltd.",
+          "company_url": "https://www.linkedin.com/company/freecopy/about/",
+          "logo_path": "freecopy_logo.png",
+          "duration": "Nov 2017 - Dec 2017",
+          "location": "Ahmedabad, Gujarat",
+          "description": "FreeCopy is the Start up from Indian Institute of Management, Ahmedabad. I have changed the integration of the whole app from Google to Firebase. I learnt the efﬁcient ways of Data communications like Retroﬁt, Eventbus etc. I experienced the real time start up. I learnt the Design thinking of UI on perspective of People.",
+          "color": "#fc1f20"
+        }
+      ]
+    },
+    {
+      "title": "Internships",
+      "experiences": [
+        {
+          "title": "Data Science Research Intern",
+          "company": "Delhivery Pvt. Ltd.",
+          "company_url": "https://www.delhivery.com/",
+          "logo_path": "delhivery_logo.png",
+          "duration": "May 2019 - Sept 2019",
+          "location": "Gurgaon, Haryana",
+          "description": "I have worked on project of predicting freight rates based on previous data. There were two objectives: (1) To build a forecasting engine to predict daily freight rates. (2) To embed feature in the model which can explain the seasonal major changes in freight rate based on regions and locations. I have closely worked with deep learning models in combination with statistical methods to create solution for this. At the end of internship, I had created model deployed on AWS EC2 with the use of Kafka stream jobs, ElasticSearch and PostgreSQL.",
+          "color": "#ee3c26"
+        }
+      ]
+    },
+    {
+      "title": "Volunteerships",
+      "experiences": [
+        {
+          "title": "TEDx Organizer",
+          "company": "TEDx",
+          "company_url": "https://msa.edu.eg/msauniversity/campus/student-clubs/tedx-msa/",
+          "logo_path": "tedx-logo.png",
+          "duration": "",
+          "location": "MSA University",
+          "description": "Actively serving as an organizer for TEDx at MSA University, responsible for planning and coordinating events, managing logistics, and supporting speakers. Collaborate with team members to promote events, engage the student community, and ensure smooth execution of talks and activities, fostering an inspiring environment for knowledge sharing and innovation.",
+          "color": "#181717"
+        },
+        {
+          "title": "delegate of Japan security council",
+          "company": "Mock United Nations(MUN)",
+          "company_url": "https://archive.msa.edu.eg/student-life/student-activities-clubs/mun",
+          "logo_path": "mun-logo.png",
+          "duration": "",
+          "location": "MSA University",
+          "description": "Served as a delegate representing Japan in the Security Council at MSA Model United Nations (MSAMUN). Participated in sessions simulating UN proceedings, engaged in debates on international issues, collaborated with fellow delegates to draft resolutions, and honed diplomacy, negotiation, and public speaking skills.",
+          "color": "#000000"
+        },
+        {
+          "title": "Sales and Marketing Volunteer",
+          "company": "Titans",
+          "company_url": "https://msa.edu.eg/msauniversity/campus/student-clubs/titans/",
+          "logo_path": "titans_logo.jpg",
+          "duration": "",
+          "location": "MSA University",
+          "description": "Served as a Sales and Marketing member for Titans, a fitness club at MSA University. Promoted club activities and events, engaged with students to increase participation, and contacted influencers to expand the club’s reach. Collaborated with partners like Gravity Code Games and Arkade Games to integrate entertainment into events, enhancing student engagement and outreach.",
+          "color": "#4285F4"
+        },
+        {
+          "title": "Food preparing volunteer",
+          "company": "Lebaladna",
+          "company_url": "https://www.lebaladna.org/",
+          "logo_path": "lebaladna_logo.png",
+          "duration": "",
+          "location": "Cairo, Egypt",
+          "description": "Volunteered in preparing and distributing 5,000 food cartons for underprivileged families before Ramadan, supporting the Lebaladna Foundation led by Dr. Nawal El-Degwi, and assisting with organization, coordination, and timely delivery.",
+          "color": "#0C9D58"
+        },
+        {
+          "title": "Orphaned children Event Organizer volunteer",
+          "company": "Alwan Team",
+          "company_url": "https://www.facebook.com/AlwanTeamEG/",
+          "logo_path": "alwan_team_logo.jpg",
+          "duration": "",
+          "location": "Kafr-Elshiekh, Egypt",
+          "description": "Volunteered as an event organizer for activities supporting orphaned children, contributing to planning, coordination, and execution of charitable events. Collaborated with team members to manage logistics, engage volunteers, and create meaningful social and recreational experiences for children.",
+          "color": "#0C9D58"
+        }
+      ]
+    }
+  ],
+  "subtitle": "Work, Internship and Volunteership",
+  "title": "Experience"
 }

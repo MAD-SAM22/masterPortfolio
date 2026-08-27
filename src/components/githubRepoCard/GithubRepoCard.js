@@ -1,18 +1,24 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import ProjectLanguages from "../../components/projectLanguages/ProjectLanguages";
 import "./GithubRepoCard.css";
 import { Fade } from "react-reveal";
 
 export default function GithubRepoCard({ repo, theme }) {
-  function openRepoinNewTab(url) {
-    var win = window.open(url, "_blank");
-    win.focus();
+  const history = useHistory();
+
+  function handleClick() {
+    if (repo.id) {
+      history.push(`/project/project/${repo.id}`);
+    } else if (repo.url && repo.url !== "#") {
+      window.open(repo.url, "_blank");
+    }
   }
 
   return (
     <div className="repo-card-div" style={{ backgroundColor: theme.highlight }}>
       <Fade bottom duration={2000} distance="40px">
-        <div key={repo.id} onClick={() => openRepoinNewTab(repo.url)}>
+        <div key={repo.id} onClick={handleClick}>
           <div className="repo-name-div">
             <svg
               aria-hidden="true"

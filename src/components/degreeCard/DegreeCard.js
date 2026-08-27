@@ -8,7 +8,7 @@ class DegreeCard extends Component {
     const theme = this.props.theme;
     return (
       <div className="degree-card">
-        {degree.logo_path && (
+        {(degree.logo_url || degree.logo_path) && (
           <Flip left duration={2000}>
             <div className="card-img">
               <img
@@ -17,7 +17,10 @@ class DegreeCard extends Component {
                   maxHeight: "100%",
                   transform: "scale(0.9)",
                 }}
-                src={require(`../../assets/images/${degree.logo_path}`)}
+                src={
+                  degree.logo_url ||
+                  require(`../../assets/images/${degree.logo_path}`)
+                }
                 alt={degree.alt_name}
               />
             </div>
@@ -26,7 +29,9 @@ class DegreeCard extends Component {
         <Fade right duration={2000} distance="40px">
           <div
             className="card-body"
-            style={{ width: degree.logo_path ? "90%" : "100%" }}
+            style={{
+              width: degree.logo_url || degree.logo_path ? "90%" : "100%",
+            }}
           >
             <div
               className="body-header"

@@ -636,7 +636,8 @@ const publications = {
         "IMenu: A Smart Table Interface Combining TUIs, Gestures, AR, Eye-Gaze, and Emotion Recognition",
       createdAt: "2025-10-01T00:00:00Z",
       description:
-        "published In Conference: 2025 7th Novel Intelligent and Leading Emerging Sciences Conference (NILES)",
+        "Published In Conference: 2025 7th Novel Intelligent and Leading Emerging Sciences Conference (NILES)\n\nThis research presents IMenu, an intelligent table interface that integrates multiple interaction modalities including tangible user interfaces (TUIs), gesture recognition, augmented reality, eye-gaze tracking, and emotion recognition to create a seamless and intuitive dining experience.",
+      images: ["projects_image.svg", "googleAssistant.svg"],
       url:
         "https://www.researchgate.net/publication/397635702_IMenu_A_Smart_Table_Interface_Combining_TUIs_Gestures_AR_Eye-Gaze_and_Emotion_Recognition",
     },
@@ -646,7 +647,8 @@ const publications = {
         "LLM-Ops and Ensemble Intelligence for Robust LLM Performance: Integrating Fine-Tuning and Majority Voting",
       createdAt: "2025-10-01T00:00:00Z",
       description:
-        "published In Conference: 2025 IEEE/ACS 22nd International Conference on Computer Systems and Applications (AICCSA)",
+        "Published In Conference: 2025 IEEE/ACS 22nd International Conference on Computer Systems and Applications (AICCSA)\n\nWe propose an approach that combines LLM-Ops practices with ensemble intelligence through fine-tuning and majority voting to achieve robust and reliable LLM performance across varied use cases.",
+      images: ["projects_image.svg", "data_science.svg"],
       url:
         "https://www.researchgate.net/publication/399468850_LLM-Ops_and_Ensemble_Intelligence_for_Robust_LLM_Performance_Integrating_Fine-Tuning_and_Majority_Voting",
     },
@@ -655,7 +657,8 @@ const publications = {
       name: "LLMOps-Driven Robotic Process Automation Approach",
       createdAt: "2025-05-01T00:00:00Z",
       description:
-        "published In Conference: 2025 Intelligent Methods, Systems, and Applications (IMSA)",
+        "Published In Conference: 2025 Intelligent Methods, Systems, and Applications (IMSA)\n\nThis paper introduces an LLMOps-driven methodology for building intelligent robotic process automation systems, enabling scalable and maintainable AI-powered automation pipelines.",
+      images: ["projects_image.svg", "developerActivity.svg"],
       url:
         "https://www.researchgate.net/publication/395825464_LLMOps-Driven_Robotic_Process_Automation_Approach",
     },
@@ -664,7 +667,8 @@ const publications = {
       name: "LMV-RPA: Large Model Voting-Based Robotic Process Automation",
       createdAt: "2025-06-12T00:00:00Z",
       description:
-        "published In book: Advances on Intelligent Computing and Data Science II",
+        "Published In book: Advances on Intelligent Computing and Data Science II\n\nLMV-RPA leverages large language models with a voting mechanism to improve the accuracy and reliability of robotic process automation tasks, particularly for complex document understanding.",
+      images: ["projects_image.svg"],
       url:
         "https://www.researchgate.net/publication/393017533_LMV-RPA_Large_Model_Voting-Based_Robotic_Process_Automation",
     },
@@ -674,7 +678,8 @@ const publications = {
         "LMRPA: Large Language Model-Driven Efficient Robotic Process Automation for OCR",
       createdAt: "2025-07-12T00:00:00Z",
       description:
-        "published In book: Advances on Intelligent Computing and Data Science II",
+        "Published In book: Advances on Intelligent Computing and Data Science II\n\nLMRPA integrates large language models with OCR systems to create an efficient RPA pipeline for intelligent document processing, achieving significant improvements in extraction accuracy.",
+      images: ["projects_image.svg", "data_science.svg"],
       url:
         "https://www.researchgate.net/publication/393904765_LMRPA_Large_Language_Model-Driven_Efficient_Robotic_Process_Automation_for_OCR",
     },
@@ -684,7 +689,8 @@ const publications = {
         "ERPA: Efficient RPA Model Integrating OCR and LLMs for Intelligent Document Processing",
       createdAt: "2025-11-05T00:00:00Z",
       description:
-        "published In Conference: 2024 International Mobile, Intelligent, and Ubiquitous Computing Conference (MIUCC)",
+        "Published In Conference: 2024 International Mobile, Intelligent, and Ubiquitous Computing Conference (MIUCC)\n\nERPA presents an efficient framework that combines OCR with large language models for intelligent document processing, optimized for performance and accuracy.",
+      images: ["projects_image.svg", "developerActivity.svg"],
       url:
         "https://www.researchgate.net/publication/387120805_ERPA_Efficient_RPA_Model_Integrating_OCR_and_LLMs_for_Intelligent_Document_Processing",
     },

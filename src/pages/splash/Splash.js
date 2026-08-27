@@ -22,10 +22,12 @@ class Splash extends Component {
   }
 
   componentDidMount() {
+    document.body.classList.add("splash-active");
     this.id = setTimeout(() => this.setState({ redirect: true }), 5500);
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
+    document.body.classList.remove("splash-active");
     clearTimeout(this.id);
   }
 
