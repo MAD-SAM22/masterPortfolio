@@ -1,4 +1,22 @@
 import React, { useState, useEffect } from "react";
+import {
+  Section,
+  SectionTitle,
+  FormCard,
+  FormGrid,
+  FormGroup,
+  Label,
+  Input,
+  BtnPrimary,
+  BtnDanger,
+  BtnGhost,
+  BtnGroup,
+  ItemCard,
+  ItemCardBody,
+  ItemCardHeader,
+  ItemCardTitle,
+  ItemCardMeta,
+} from "./adminStyles";
 
 const API = "/api/competitive-sites";
 
@@ -72,111 +90,137 @@ export default function AdminCompetitiveSites({ adminToken }) {
     });
   };
 
-  const css = {
-    input: {
-      width: "100%",
-      padding: 8,
-      marginBottom: 12,
-      border: "1px solid #ccc",
-      borderRadius: 4,
-    },
-    btn: {
-      padding: "8px 16px",
-      background: "#222",
-      color: "#fff",
-      border: "none",
-      borderRadius: 4,
-      cursor: "pointer",
-      marginRight: 8,
-    },
+  const getIconStyle = (style) => {
+    if (typeof style === "string") {
+      try {
+        style = JSON.parse(style);
+      } catch {
+        return {};
+      }
+    }
+    return style || {};
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} style={{ marginBottom: 24 }}>
-        <input
-          name="siteName"
-          style={css.input}
-          value={form.siteName}
-          onChange={handleChange}
-          placeholder="Site name (e.g. LeetCode)"
-          required
-        />
-        <input
-          name="iconifyClassname"
-          style={css.input}
-          value={form.iconifyClassname}
-          onChange={handleChange}
-          placeholder="Iconify class (e.g. simple-icons:leetcode)"
-        />
-        <input
-          name="style"
-          style={css.input}
-          value={form.style}
-          onChange={handleChange}
-          placeholder='Style JSON (e.g. {"color":"#F79F1B"})'
-        />
-        <input
-          name="profileLink"
-          style={css.input}
-          value={form.profileLink}
-          onChange={handleChange}
-          placeholder="Profile URL"
-          required
-        />
-        <button type="submit" style={css.btn}>
-          {editing ? "Update" : "Add"} Site
-        </button>
-        {editing && (
-          <button
-            type="button"
-            style={{ ...css.btn, background: "#666" }}
-            onClick={() => {
-              setEditing(null);
-              setForm({
-                siteName: "",
-                iconifyClassname: "",
-                style: "{}",
-                profileLink: "",
-              });
-            }}
-          >
-            Cancel
-          </button>
-        )}
-      </form>
-      <ul style={{ listStyle: "none", padding: 0 }}>
+    <Section>
+      <FormCard as="form" onSubmit={handleSubmit}>
+        <SectionTitle>{editing ? "Edit Site" : "Add Site"}</SectionTitle>
+        <FormGrid>
+          <FormGroup>
+            <Label>Site Name</Label>
+            <Input
+              name="siteName"
+              value={form.siteName}
+              onChange={handleChange}
+              placeholder="e.g. LeetCode"
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Profile URL</Label>
+            <Input
+              name="profileLink"
+              value={form.profileLink}
+              onChange={handleChange}
+              placeholder="https://..."
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Iconify Class</Label>
+            <Input
+              name="iconifyClassname"
+              value={form.iconifyClassname}
+              onChange={handleChange}
+              placeholder="e.g. simple-icons:leetcode"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Style JSON</Label>
+            <Input
+              name="style"
+              value={form.style}
+              onChange={handleChange}
+              placeholder='{"color":"#F79F1B"}'
+            />
+          </FormGroup>
+        </FormGrid>
+        <BtnGroup>
+          <BtnPrimary type="submit">
+            {editing ? "Update" : "Add"} Site
+          </BtnPrimary>
+          {editing && (
+            <BtnGhost
+              type="button"
+              onClick={() => {
+                setEditing(null);
+                setForm({
+                  siteName: "",
+                  iconifyClassname: "",
+                  style: "{}",
+                  profileLink: "",
+                });
+              }}
+            >
+              Cancel
+            </BtnGhost>
+          )}
+        </BtnGroup>
+      </FormCard>
+
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {items.map((c) => (
-          <li
-            key={c.id}
-            style={{
-              padding: 12,
-              marginBottom: 8,
-              border: "1px solid #ccc",
-              borderRadius: 6,
-            }}
-          >
-            <strong>{c.siteName}</strong> –{" "}
-            <a href={c.profileLink} target="_blank" rel="noopener noreferrer">
-              {c.profileLink}
-            </a>
-            <div style={{ marginTop: 8 }}>
-              <button
-                style={{ ...css.btn, padding: "4px 10px" }}
-                onClick={() => handleEdit(c)}
-              >
-                Edit
-              </button>
-              <button
-                style={{ ...css.btn, padding: "4px 10px", background: "#c00" }}
-                onClick={() => handleDelete(c.id)}
-              >
-                Delete
-              </button>
-            </div>
-          </li>
+          <ItemCard key={c.id}>
+            <ItemCardBody>
+              <ItemCardHeader>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: 10,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background: getIconStyle(c.style).color || "#f1f5f9",
+                      fontSize: "1.2rem",
+                    }}
+                  >
+                    {c.iconifyClassname ? (
+                      <span
+                        className="iconify"
+                        data-icon={c.iconifyClassname}
+                        style={{ color: "#fff" }}
+                      />
+                    ) : (
+                      c.siteName?.charAt(0)
+                    )}
+                  </div>
+                  <div>
+                    <ItemCardTitle>{c.siteName}</ItemCardTitle>
+                    <ItemCardMeta>
+                      <a
+                        href={c.profileLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "#3b82f6" }}
+                      >
+                        View Profile
+                      </a>
+                    </ItemCardMeta>
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 6 }}>
+                  <BtnGhost onClick={() => handleEdit(c)}>Edit</BtnGhost>
+                  <BtnDanger onClick={() => handleDelete(c.id)}>
+                    Delete
+                  </BtnDanger>
+                </div>
+              </ItemCardHeader>
+            </ItemCardBody>
+          </ItemCard>
         ))}
-      </ul>
-    </div>
+      </div>
+    </Section>
   );
 }

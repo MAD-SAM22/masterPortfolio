@@ -4,12 +4,8 @@ import AdminHome from "./AdminHome";
 import AdminEducation from "./AdminEducation";
 import AdminExperience from "./AdminExperience";
 import AdminProjects from "./AdminProjects";
-import AdminContact from "./AdminContact";
 import AdminResearch from "./AdminResearch";
-import AdminImages from "./AdminImages";
-import AdminSiteDetails from "./AdminSiteDetails";
-import * as portfolio from "../../portfolio";
-import ProjectsData from "../../shared/opensource/projects.json";
+import AdminContact from "./AdminContact";
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(10px); }
@@ -28,25 +24,26 @@ const DashboardContainer = styled.div`
 `;
 
 const Sidebar = styled.div`
-  width: 280px;
+  width: 260px;
   background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 24px 0;
+  padding: 20px 0;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
   position: fixed;
   height: 100vh;
   z-index: 100;
+  overflow-y: auto;
 `;
 
 const SidebarHeader = styled.div`
-  padding: 0 24px 24px;
+  padding: 0 20px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 
   h2 {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
     margin: 0;
     letter-spacing: -0.5px;
@@ -54,47 +51,50 @@ const SidebarHeader = styled.div`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  p {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin: 4px 0 0 0;
+  }
 `;
 
 const NavItem = styled.div`
-  padding: 12px 24px;
+  padding: 10px 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   transition: all 0.2s ease;
   background: ${(props) =>
     props.active ? "rgba(255, 255, 255, 0.1)" : "transparent"};
   color: ${(props) => (props.active ? "#fff" : "#94a3b8")};
-  border-left: 4px solid
+  border-left: 3px solid
     ${(props) => (props.active ? "#38bdf8" : "transparent")};
+  font-size: 0.9rem;
 
   &:hover {
     background: rgba(255, 255, 255, 0.05);
     color: #fff;
   }
-
-  span {
-    font-weight: ${(props) => (props.active ? "600" : "400")};
-    font-size: 0.95rem;
-  }
 `;
 
 const ContentArea = styled.div`
   flex: 1;
-  margin-left: 280px;
-  padding: 40px;
+  margin-left: 260px;
+  padding: 32px;
   animation: ${fadeIn} 0.4s ease-out;
+  min-height: 100vh;
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 
   h1 {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
     font-weight: 800;
     color: #1e293b;
     margin: 0;
@@ -104,26 +104,9 @@ const Header = styled.div`
 const Card = styled.div`
   background: #fff;
   border-radius: 12px;
-  padding: 32px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-`;
-
-const SeedButton = styled.button`
-  padding: 10px 20px;
-  background: #10b981;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 0.875rem;
-
-  &:hover {
-    background: #059669;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
+  padding: 28px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
 `;
 
 const LoginFormContainer = styled.div`
@@ -156,6 +139,7 @@ const Input = styled.input`
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s;
+  box-sizing: border-box;
 
   &:focus {
     outline: none;
@@ -181,14 +165,12 @@ const Button = styled.button`
 `;
 
 const TABS = [
-  { key: "home", label: "Home" },
-  { key: "education", label: "Education" },
-  { key: "experience", label: "Experience" },
-  { key: "projects", label: "Projects" },
-  { key: "research", label: "Research / Blogs" },
-  { key: "contact", label: "Contact Me" },
-  { key: "images", label: "Images" },
-  { key: "site", label: "Site Details" },
+  { key: "home", label: "Home", icon: "\u{1F3E0}" },
+  { key: "education", label: "Education", icon: "\u{1F393}" },
+  { key: "experience", label: "Experience", icon: "\u{1F4BC}" },
+  { key: "projects", label: "Projects", icon: "\u{1F680}" },
+  { key: "research", label: "Research / Blogs", icon: "\u{1F4DD}" },
+  { key: "contact", label: "Contact Me", icon: "\u{1F4E7}" },
 ];
 
 export default function AdminDashboard() {
@@ -220,7 +202,7 @@ export default function AdminDashboard() {
       <LoginFormContainer>
         <LoginCard>
           <h2 style={{ marginBottom: 8, color: "#1e293b" }}>Admin Portal</h2>
-          <p style={{ marginBottom: 32, color: "#64748b" }}>
+          <p style={{ marginBottom: 32, color: "#64748b", fontSize: "0.9rem" }}>
             Please enter your password to continue
           </p>
           <form onSubmit={handleLogin}>
@@ -248,34 +230,12 @@ export default function AdminDashboard() {
     );
   }
 
-  const handleSeed = () => {
-    if (
-      !window.confirm(
-        "Seed database from portfolio.js? This will replace existing data."
-      )
-    )
-      return;
-    const payload = {
-      ...portfolio,
-      projectsData: ProjectsData,
-    };
-    fetch("/api/seed", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-admin-token": token },
-      body: JSON.stringify(payload),
-    })
-      .then((r) => r.json())
-      .then((d) =>
-        alert(d.error ? "Error: " + d.error : "Database seeded successfully!")
-      )
-      .catch((e) => alert("Error: " + e.message));
-  };
-
   return (
     <DashboardContainer>
       <Sidebar>
         <SidebarHeader>
-          <h2>Master Portfolio</h2>
+          <h2>Portfolio Admin</h2>
+          <p>Manage your portfolio content</p>
         </SidebarHeader>
         {TABS.map((t) => (
           <NavItem
@@ -283,6 +243,7 @@ export default function AdminDashboard() {
             active={tab === t.key}
             onClick={() => setTab(t.key)}
           >
+            <span>{t.icon}</span>
             <span>{t.label}</span>
           </NavItem>
         ))}
@@ -290,7 +251,6 @@ export default function AdminDashboard() {
       <ContentArea>
         <Header>
           <h1>{TABS.find((t) => t.key === tab)?.label}</h1>
-          <SeedButton onClick={handleSeed}>Sync portfolio.js</SeedButton>
         </Header>
         <Card>
           {tab === "home" && <AdminHome adminToken={token} />}
@@ -299,8 +259,6 @@ export default function AdminDashboard() {
           {tab === "projects" && <AdminProjects adminToken={token} />}
           {tab === "research" && <AdminResearch adminToken={token} />}
           {tab === "contact" && <AdminContact adminToken={token} />}
-          {tab === "images" && <AdminImages adminToken={token} />}
-          {tab === "site" && <AdminSiteDetails adminToken={token} />}
         </Card>
       </ContentArea>
     </DashboardContainer>

@@ -2,9 +2,9 @@
 
 .header {
   display: block;
-  max-width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
+  width: 100%;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
 
 .header ul {
@@ -133,6 +133,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 20px 60px;
   }
   .header .menu {
     max-height: none;

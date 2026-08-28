@@ -26,6 +26,19 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// Middleware: try uploading with one field name, fallback to another
+function uploadEither(nameA, nameB) {
+  return (req, res, next) => {
+    upload.single(nameA)(req, res, (err) => {
+      if (err) {
+        upload.single(nameB)(req, res, next);
+      } else {
+        next();
+      }
+    });
+  };
+}
+
 app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "../public/uploads")));
@@ -187,14 +200,43 @@ alterCols.forEach((sql) => {
 app.get("/api/projects", (req, res) => {
   db.all("SELECT * FROM projects", [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
+    rows = rows.map((r) => {
+      if (r.image) {
+        try {
+          const parsed = JSON.parse(r.image);
+          r.images = Array.isArray(parsed) ? parsed : [r.image];
+        } catch {
+          r.images = [r.image];
+        }
+      } else {
+        r.images = [];
+      }
+      return r;
+    });
     res.json(rows);
   });
 });
 
 // API: Add project
-app.post("/api/projects", adminAuth, upload.single("image"), (req, res) => {
-  const { name, description, year, url, technologies, languages } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : null;
+app.post("/api/projects", adminAuth, upload.array("images", 10), (req, res) => {
+  const {
+    name,
+    description,
+    year,
+    url,
+    technologies,
+    languages,
+    existingImages,
+  } = req.body;
+  const newImages = (req.files || []).map((f) => `/uploads/${f.filename}`);
+  let existing = [];
+  if (existingImages) {
+    try {
+      existing = JSON.parse(existingImages);
+    } catch {}
+  }
+  const allImages = [...existing, ...newImages];
+  const imageStr = allImages.length > 0 ? JSON.stringify(allImages) : null;
   const langStr =
     typeof languages === "string"
       ? languages
@@ -203,7 +245,7 @@ app.post("/api/projects", adminAuth, upload.single("image"), (req, res) => {
       : null;
   db.run(
     "INSERT INTO projects (name, description, year, url, image, technologies, languages) VALUES (?, ?, ?, ?, ?, ?, ?)",
-    [name, description, year, url, image, technologies, langStr],
+    [name, description, year, url, imageStr, technologies, langStr],
     function (err) {
       if (err) return res.status(500).json({ error: err.message });
       res.json({ id: this.lastID });
@@ -212,24 +254,54 @@ app.post("/api/projects", adminAuth, upload.single("image"), (req, res) => {
 });
 
 // API: Update project
-app.put("/api/projects/:id", adminAuth, upload.single("image"), (req, res) => {
-  const { name, description, year, url, technologies, languages } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : req.body.image;
-  const langStr =
-    typeof languages === "string"
-      ? languages
-      : languages
-      ? JSON.stringify(languages)
-      : null;
-  db.run(
-    "UPDATE projects SET name=?, description=?, year=?, url=?, image=?, technologies=?, languages=? WHERE id=?",
-    [name, description, year, url, image, technologies, langStr, req.params.id],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ updated: this.changes });
+app.put(
+  "/api/projects/:id",
+  adminAuth,
+  upload.array("images", 10),
+  (req, res) => {
+    const {
+      name,
+      description,
+      year,
+      url,
+      technologies,
+      languages,
+      existingImages,
+    } = req.body;
+    const newImages = (req.files || []).map((f) => `/uploads/${f.filename}`);
+    let existing = [];
+    if (existingImages) {
+      try {
+        existing = JSON.parse(existingImages);
+      } catch {}
     }
-  );
-});
+    const allImages = [...existing, ...newImages];
+    const imageStr = allImages.length > 0 ? JSON.stringify(allImages) : null;
+    const langStr =
+      typeof languages === "string"
+        ? languages
+        : languages
+        ? JSON.stringify(languages)
+        : null;
+    db.run(
+      "UPDATE projects SET name=?, description=?, year=?, url=?, image=?, technologies=?, languages=? WHERE id=?",
+      [
+        name,
+        description,
+        year,
+        url,
+        imageStr,
+        technologies,
+        langStr,
+        req.params.id,
+      ],
+      function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ updated: this.changes });
+      }
+    );
+  }
+);
 
 // API: Delete project
 app.delete("/api/projects/:id", adminAuth, (req, res) => {
@@ -251,17 +323,38 @@ app.get("/api/projects/:id", (req, res) => {
 app.get("/api/research", (req, res) => {
   db.all("SELECT * FROM research", [], (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
+    rows = rows.map((r) => {
+      if (r.image) {
+        try {
+          const parsed = JSON.parse(r.image);
+          r.images = Array.isArray(parsed) ? parsed : [r.image];
+        } catch {
+          r.images = [r.image];
+        }
+      } else {
+        r.images = [];
+      }
+      return r;
+    });
     res.json(rows);
   });
 });
 
 // API: Add research
-app.post("/api/research", adminAuth, upload.single("image"), (req, res) => {
-  const { title, abstract, date, url, content } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : null;
+app.post("/api/research", adminAuth, upload.array("images", 10), (req, res) => {
+  const { title, abstract, date, url, content, existingImages } = req.body;
+  const newImages = (req.files || []).map((f) => `/uploads/${f.filename}`);
+  let existing = [];
+  if (existingImages) {
+    try {
+      existing = JSON.parse(existingImages);
+    } catch {}
+  }
+  const allImages = [...existing, ...newImages];
+  const imageStr = allImages.length > 0 ? JSON.stringify(allImages) : null;
   db.run(
     "INSERT INTO research (title, abstract, date, url, image, content) VALUES (?, ?, ?, ?, ?, ?)",
-    [title, abstract, date, url, image, content],
+    [title, abstract, date, url, imageStr, content],
     function (err) {
       if (err) return res.status(500).json({ error: err.message });
       res.json({ id: this.lastID });
@@ -270,18 +363,31 @@ app.post("/api/research", adminAuth, upload.single("image"), (req, res) => {
 });
 
 // API: Update research
-app.put("/api/research/:id", adminAuth, upload.single("image"), (req, res) => {
-  const { title, abstract, date, url, content } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : req.body.image;
-  db.run(
-    "UPDATE research SET title=?, abstract=?, date=?, url=?, image=?, content=? WHERE id=?",
-    [title, abstract, date, url, image, content, req.params.id],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ updated: this.changes });
+app.put(
+  "/api/research/:id",
+  adminAuth,
+  upload.array("images", 10),
+  (req, res) => {
+    const { title, abstract, date, url, content, existingImages } = req.body;
+    const newImages = (req.files || []).map((f) => `/uploads/${f.filename}`);
+    let existing = [];
+    if (existingImages) {
+      try {
+        existing = JSON.parse(existingImages);
+      } catch {}
     }
-  );
-});
+    const allImages = [...existing, ...newImages];
+    const imageStr = allImages.length > 0 ? JSON.stringify(allImages) : null;
+    db.run(
+      "UPDATE research SET title=?, abstract=?, date=?, url=?, image=?, content=? WHERE id=?",
+      [title, abstract, date, url, imageStr, content, req.params.id],
+      function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ updated: this.changes });
+      }
+    );
+  }
+);
 
 // API: Delete research
 app.delete("/api/research/:id", adminAuth, (req, res) => {
@@ -300,48 +406,10 @@ app.get("/api/certificates", (req, res) => {
 });
 
 // API: Add certificate
-app.post("/api/certificates", adminAuth, upload.single("image"), (req, res) => {
-  const {
-    title,
-    issuer,
-    subtitle,
-    date,
-    url,
-    certificate_link,
-    description,
-    logo_path,
-    alt_name,
-    color_code,
-  } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : logo_path || null;
-  const link = certificate_link || url;
-  db.run(
-    "INSERT INTO certificates (title, issuer, subtitle, date, url, certificate_link, image, logo_path, description, alt_name, color_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    [
-      title,
-      issuer,
-      subtitle,
-      date,
-      url,
-      link,
-      image,
-      logo_path,
-      description,
-      alt_name,
-      color_code,
-    ],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ id: this.lastID });
-    }
-  );
-});
-
-// API: Update certificate
-app.put(
-  "/api/certificates/:id",
+app.post(
+  "/api/certificates",
   adminAuth,
-  upload.single("image"),
+  uploadEither("image", "logo_path"),
   (req, res) => {
     const {
       title,
@@ -351,13 +419,52 @@ app.put(
       url,
       certificate_link,
       description,
-      logo_path,
       alt_name,
       color_code,
     } = req.body;
-    const image = req.file
-      ? `/uploads/${req.file.filename}`
-      : req.body.image || req.body.logo_path;
+    const image = req.file ? `/uploads/${req.file.filename}` : null;
+    const link = certificate_link || url;
+    db.run(
+      "INSERT INTO certificates (title, issuer, subtitle, date, url, certificate_link, image, logo_path, description, alt_name, color_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      [
+        title,
+        issuer,
+        subtitle,
+        date,
+        url,
+        link,
+        image,
+        image,
+        description,
+        alt_name,
+        color_code,
+      ],
+      function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ id: this.lastID });
+      }
+    );
+  }
+);
+
+// API: Update certificate
+app.put(
+  "/api/certificates/:id",
+  adminAuth,
+  uploadEither("image", "logo_path"),
+  (req, res) => {
+    const {
+      title,
+      issuer,
+      subtitle,
+      date,
+      url,
+      certificate_link,
+      description,
+      alt_name,
+      color_code,
+    } = req.body;
+    const image = req.file ? `/uploads/${req.file.filename}` : null;
     const link = certificate_link || url;
     db.run(
       "UPDATE certificates SET title=?, issuer=?, subtitle=?, date=?, url=?, certificate_link=?, image=?, logo_path=?, description=?, alt_name=?, color_code=? WHERE id=?",
@@ -369,7 +476,7 @@ app.put(
         url,
         link,
         image,
-        logo_path,
+        image,
         description,
         alt_name,
         color_code,
@@ -421,53 +528,10 @@ app.get("/api/experience", (req, res) => {
 });
 
 // API: Add experience
-app.post("/api/experience", adminAuth, upload.single("image"), (req, res) => {
-  const {
-    role,
-    title,
-    company,
-    company_url,
-    start,
-    end,
-    duration,
-    location,
-    description,
-    logo_path,
-    section_type,
-    color,
-  } = req.body;
-  const image = req.file ? `/uploads/${req.file.filename}` : logo_path || null;
-  const t = title || role;
-  const dur = duration || (start && end ? `${start} - ${end}` : start || "");
-  db.run(
-    "INSERT INTO experience (role, title, company, company_url, start, end, duration, location, description, image, logo_path, section_type, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    [
-      t,
-      t,
-      company,
-      company_url,
-      start,
-      end,
-      dur,
-      location,
-      description,
-      image,
-      logo_path,
-      section_type || "work",
-      color,
-    ],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ id: this.lastID });
-    }
-  );
-});
-
-// API: Update experience
-app.put(
-  "/api/experience/:id",
+app.post(
+  "/api/experience",
   adminAuth,
-  upload.single("image"),
+  uploadEither("image", "logo_path"),
   (req, res) => {
     const {
       role,
@@ -479,13 +543,57 @@ app.put(
       duration,
       location,
       description,
-      logo_path,
       section_type,
       color,
     } = req.body;
-    const image = req.file
-      ? `/uploads/${req.file.filename}`
-      : req.body.image || req.body.logo_path;
+    const image = req.file ? `/uploads/${req.file.filename}` : null;
+    const t = title || role;
+    const dur = duration || (start && end ? `${start} - ${end}` : start || "");
+    db.run(
+      "INSERT INTO experience (role, title, company, company_url, start, end, duration, location, description, image, logo_path, section_type, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      [
+        t,
+        t,
+        company,
+        company_url,
+        start,
+        end,
+        dur,
+        location,
+        description,
+        image,
+        image,
+        section_type || "work",
+        color,
+      ],
+      function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ id: this.lastID });
+      }
+    );
+  }
+);
+
+// API: Update experience
+app.put(
+  "/api/experience/:id",
+  adminAuth,
+  uploadEither("image", "logo_path"),
+  (req, res) => {
+    const {
+      role,
+      title,
+      company,
+      company_url,
+      start,
+      end,
+      duration,
+      location,
+      description,
+      section_type,
+      color,
+    } = req.body;
+    const image = req.file ? `/uploads/${req.file.filename}` : null;
     const t = title || role;
     const dur = duration || (start && end ? `${start} - ${end}` : start || "");
     db.run(
@@ -501,7 +609,7 @@ app.put(
         location,
         description,
         image,
-        logo_path,
+        image,
         section_type || "work",
         color,
         req.params.id,
@@ -694,61 +802,70 @@ app.get("/api/degrees", (req, res) => {
     res.json(rows);
   });
 });
-app.post("/api/degrees", adminAuth, (req, res) => {
+app.post("/api/degrees", adminAuth, upload.single("logo_path"), (req, res) => {
   const {
     title,
     subtitle,
-    logo_path,
     alt_name,
     duration,
     descriptions,
     website_link,
   } = req.body;
+  const logo = req.file
+    ? `/uploads/${req.file.filename}`
+    : req.body.logo_path || null;
   const desc = Array.isArray(descriptions)
     ? JSON.stringify(descriptions)
     : descriptions || "[]";
   db.run(
     "INSERT INTO degrees (title, subtitle, logo_path, alt_name, duration, descriptions, website_link) VALUES (?,?,?,?,?,?,?)",
-    [title, subtitle, logo_path, alt_name, duration, desc, website_link],
+    [title, subtitle, logo, alt_name, duration, desc, website_link],
     function (err) {
       if (err) return res.status(500).json({ error: err.message });
       res.json({ id: this.lastID });
     }
   );
 });
-app.put("/api/degrees/:id", adminAuth, (req, res) => {
-  const {
-    title,
-    subtitle,
-    logo_path,
-    alt_name,
-    duration,
-    descriptions,
-    website_link,
-  } = req.body;
-  const desc = Array.isArray(descriptions)
-    ? JSON.stringify(descriptions)
-    : typeof descriptions === "string"
-    ? descriptions
-    : "[]";
-  db.run(
-    "UPDATE degrees SET title=?, subtitle=?, logo_path=?, alt_name=?, duration=?, descriptions=?, website_link=? WHERE id=?",
-    [
+app.put(
+  "/api/degrees/:id",
+  adminAuth,
+  upload.single("logo_path"),
+  (req, res) => {
+    const {
       title,
       subtitle,
-      logo_path,
       alt_name,
       duration,
-      desc,
+      descriptions,
       website_link,
-      req.params.id,
-    ],
-    function (err) {
-      if (err) return res.status(500).json({ error: err.message });
-      res.json({ updated: this.changes });
-    }
-  );
-});
+    } = req.body;
+    const logo = req.file
+      ? `/uploads/${req.file.filename}`
+      : req.body.logo_path || null;
+    const desc = Array.isArray(descriptions)
+      ? JSON.stringify(descriptions)
+      : typeof descriptions === "string"
+      ? descriptions
+      : "[]";
+    db.run(
+      "UPDATE degrees SET title=?, subtitle=?, logo_path=?, alt_name=?, duration=?, descriptions=?, website_link=? WHERE id=?",
+      [
+        title,
+        subtitle,
+        logo,
+        alt_name,
+        duration,
+        desc,
+        website_link,
+        req.params.id,
+      ],
+      function (err) {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ updated: this.changes });
+      }
+    );
+  }
+);
 app.delete("/api/degrees/:id", adminAuth, (req, res) => {
   db.run("DELETE FROM degrees WHERE id=?", [req.params.id], function (err) {
     if (err) return res.status(500).json({ error: err.message });
@@ -1149,16 +1266,27 @@ app.get("/api/portfolio", (req, res) => {
           if (r.phone_section)
             result[key].phoneSection = JSON.parse(r.phone_section);
         } else if (key === "research")
-          result[key] = rows.map((r) => ({
-            ...r,
-            id: r.id,
-            name: r.title,
-            createdAt: r.date,
-            description: r.content || r.abstract,
-            summary: r.abstract,
-            url: r.url,
-            images: r.image ? [r.image] : [],
-          }));
+          result[key] = rows.map((r) => {
+            let images = [];
+            if (r.image) {
+              try {
+                const parsed = JSON.parse(r.image);
+                images = Array.isArray(parsed) ? parsed : [r.image];
+              } catch {
+                images = [r.image];
+              }
+            }
+            return {
+              ...r,
+              id: r.id,
+              name: r.title,
+              createdAt: r.date,
+              description: r.content || r.abstract,
+              summary: r.abstract,
+              url: r.url,
+              images,
+            };
+          });
         else if (
           rows.length === 1 &&
           ![

@@ -208,10 +208,13 @@ function buildFromApi(api) {
                 id: `proj-${p.id}`,
                 name: p.name,
                 description: p.description,
+                content: p.content || "",
                 createdAt: p.year
                   ? `${p.year}-01-01T00:00:00Z`
                   : "2024-01-01T00:00:00Z",
                 url: p.url || "#",
+                repoUrl: p.repoUrl || "",
+                images: p.images || (p.image ? [p.image] : []),
                 languages: Array.isArray(langs)
                   ? langs.map((l) => ({
                       name: l.name || l,

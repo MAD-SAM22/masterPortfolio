@@ -1,4 +1,26 @@
 import React, { useState, useEffect } from "react";
+import {
+  Section,
+  SectionTitle,
+  FormCard,
+  FormGrid,
+  FormGroup,
+  Label,
+  Input,
+  TextArea,
+  BtnPrimary,
+  BtnDanger,
+  BtnGhost,
+  BtnGroup,
+  ItemCard,
+  ItemCardBody,
+  ItemCardHeader,
+  ItemCardTitle,
+  ItemCardMeta,
+  IconPreview,
+  Message,
+  Divider,
+} from "./adminStyles";
 
 const APIs = {
   home: "/api/home",
@@ -68,7 +90,7 @@ export default function AdminHome({ adminToken }) {
         "x-admin-token": adminToken,
       },
       body: JSON.stringify(home),
-    }).then(() => setMsg("Home saved!"));
+    }).then(() => setMsg("Home section saved!"));
   };
 
   const saveSkills = (e) => {
@@ -131,197 +153,256 @@ export default function AdminHome({ adminToken }) {
     );
   };
 
-  const css = {
-    input: {
-      width: "100%",
-      padding: 8,
-      marginBottom: 12,
-      border: "1px solid #ccc",
-      borderRadius: 4,
-    },
-    btn: {
-      padding: "8px 16px",
-      background: "#222",
-      color: "#fff",
-      border: "none",
-      borderRadius: 4,
-      cursor: "pointer",
-      marginRight: 8,
-    },
-  };
-
   return (
-    <div style={{ maxWidth: 900 }}>
-      <h3>Home Section</h3>
-      {msg && <p style={{ color: "green" }}>{msg}</p>}
-      <form onSubmit={saveHome} style={{ marginBottom: 32 }}>
-        <input
-          name="title"
-          style={css.input}
-          value={home.title}
-          onChange={(e) => setHome((h) => ({ ...h, title: e.target.value }))}
-          placeholder="Title"
-          required
-        />
-        <input
-          name="nickname"
-          style={css.input}
-          value={home.nickname}
-          onChange={(e) => setHome((h) => ({ ...h, nickname: e.target.value }))}
-          placeholder="Nickname"
-        />
-        <textarea
-          name="subTitle"
-          style={{ ...css.input, minHeight: 60 }}
-          value={home.subTitle}
-          onChange={(e) => setHome((h) => ({ ...h, subTitle: e.target.value }))}
-          placeholder="Subtitle"
-          required
-        />
-        <input
-          name="resumeLink"
-          style={css.input}
-          value={home.resumeLink}
-          onChange={(e) =>
-            setHome((h) => ({ ...h, resumeLink: e.target.value }))
-          }
-          placeholder="Resume URL"
-        />
-        <input
-          name="portfolio_repository"
-          style={css.input}
-          value={home.portfolio_repository}
-          onChange={(e) =>
-            setHome((h) => ({ ...h, portfolio_repository: e.target.value }))
-          }
-          placeholder="Portfolio Repo URL"
-        />
-        <input
-          name="githubProfile"
-          style={css.input}
-          value={home.githubProfile}
-          onChange={(e) =>
-            setHome((h) => ({ ...h, githubProfile: e.target.value }))
-          }
-          placeholder="GitHub Profile URL"
-        />
-        <button type="submit" style={css.btn}>
-          Save Home
-        </button>
-      </form>
+    <Section>
+      {msg && <Message>{msg}</Message>}
 
-      <h3>Social Links</h3>
-      <form onSubmit={saveLink} style={{ marginBottom: 16 }}>
-        <input
-          style={css.input}
-          value={linkForm.name}
-          onChange={(e) => setLinkForm((f) => ({ ...f, name: e.target.value }))}
-          placeholder="Name (e.g. Github)"
-          required
-        />
-        <input
-          style={css.input}
-          value={linkForm.link}
-          onChange={(e) => setLinkForm((f) => ({ ...f, link: e.target.value }))}
-          placeholder="URL"
-          required
-        />
-        <input
-          style={css.input}
-          value={linkForm.fontAwesomeIcon}
-          onChange={(e) =>
-            setLinkForm((f) => ({ ...f, fontAwesomeIcon: e.target.value }))
-          }
-          placeholder="FontAwesome icon (e.g. fa-github)"
-        />
-        <input
-          style={css.input}
-          value={linkForm.backgroundColor}
-          onChange={(e) =>
-            setLinkForm((f) => ({ ...f, backgroundColor: e.target.value }))
-          }
-          placeholder="Background color"
-        />
-        <button type="submit" style={css.btn}>
-          {editingLink ? "Update" : "Add"} Link
-        </button>
-        {editingLink && (
-          <button
-            type="button"
-            style={{ ...css.btn, background: "#666" }}
-            onClick={() => {
-              setEditingLink(null);
-              setLinkForm({
-                name: "",
-                link: "",
-                fontAwesomeIcon: "",
-                backgroundColor: "#333",
-              });
-            }}
-          >
-            Cancel
-          </button>
-        )}
-      </form>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {socialLinks.map((s) => (
-          <li
-            key={s.id}
-            style={{
-              padding: 8,
-              marginBottom: 4,
-              background: "#f5f5f5",
-              borderRadius: 4,
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <span>
-              <strong>{s.name}</strong> – {s.link}
-            </span>
-            <span>
-              <button
-                style={{ ...css.btn, padding: "4px 10px", marginRight: 4 }}
-                onClick={() => {
-                  setEditingLink(s);
-                  setLinkForm({
-                    name: s.name,
-                    link: s.link,
-                    fontAwesomeIcon: s.fontAwesomeIcon || "",
-                    backgroundColor: s.backgroundColor || "#333",
-                  });
+      <SectionTitle>Home Section</SectionTitle>
+      <FormCard as="form" onSubmit={saveHome}>
+        <FormGrid>
+          <FormGroup>
+            <Label>Title</Label>
+            <Input
+              value={home.title}
+              onChange={(e) =>
+                setHome((h) => ({ ...h, title: e.target.value }))
+              }
+              placeholder="Your name"
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Nickname</Label>
+            <Input
+              value={home.nickname}
+              onChange={(e) =>
+                setHome((h) => ({ ...h, nickname: e.target.value }))
+              }
+              placeholder="Display nickname"
+            />
+          </FormGroup>
+        </FormGrid>
+        <FormGroup>
+          <Label>Subtitle / Bio</Label>
+          <TextArea
+            value={home.subTitle}
+            onChange={(e) =>
+              setHome((h) => ({ ...h, subTitle: e.target.value }))
+            }
+            placeholder="Short description about yourself"
+            required
+          />
+        </FormGroup>
+        <FormGrid>
+          <FormGroup>
+            <Label>Resume URL</Label>
+            <Input
+              value={home.resumeLink}
+              onChange={(e) =>
+                setHome((h) => ({ ...h, resumeLink: e.target.value }))
+              }
+              placeholder="https://..."
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>GitHub Profile</Label>
+            <Input
+              value={home.githubProfile}
+              onChange={(e) =>
+                setHome((h) => ({ ...h, githubProfile: e.target.value }))
+              }
+              placeholder="https://github.com/..."
+            />
+          </FormGroup>
+        </FormGrid>
+        <FormGroup>
+          <Label>Portfolio Repository</Label>
+          <Input
+            value={home.portfolio_repository}
+            onChange={(e) =>
+              setHome((h) => ({
+                ...h,
+                portfolio_repository: e.target.value,
+              }))
+            }
+            placeholder="https://github.com/.../repo"
+          />
+        </FormGroup>
+        <BtnGroup>
+          <BtnPrimary type="submit">Save Home</BtnPrimary>
+        </BtnGroup>
+      </FormCard>
+
+      <SectionTitle>Social Links</SectionTitle>
+      <FormCard as="form" onSubmit={saveLink}>
+        <FormGrid>
+          <FormGroup>
+            <Label>Name</Label>
+            <Input
+              value={linkForm.name}
+              onChange={(e) =>
+                setLinkForm((f) => ({ ...f, name: e.target.value }))
+              }
+              placeholder="e.g. Github"
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>URL</Label>
+            <Input
+              value={linkForm.link}
+              onChange={(e) =>
+                setLinkForm((f) => ({ ...f, link: e.target.value }))
+              }
+              placeholder="https://..."
+              required
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>FontAwesome Icon</Label>
+            <Input
+              value={linkForm.fontAwesomeIcon}
+              onChange={(e) =>
+                setLinkForm((f) => ({
+                  ...f,
+                  fontAwesomeIcon: e.target.value,
+                }))
+              }
+              placeholder="e.g. fa-github"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label>Background Color</Label>
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <input
+                type="color"
+                value={linkForm.backgroundColor}
+                onChange={(e) =>
+                  setLinkForm((f) => ({
+                    ...f,
+                    backgroundColor: e.target.value,
+                  }))
+                }
+                style={{
+                  width: 40,
+                  height: 40,
+                  border: "none",
+                  borderRadius: 8,
+                  cursor: "pointer",
                 }}
-              >
-                Edit
-              </button>
-              <button
-                style={{ ...css.btn, padding: "4px 10px", background: "#c00" }}
-                onClick={() => deleteLink(s.id)}
-              >
-                Delete
-              </button>
-            </span>
-          </li>
-        ))}
-      </ul>
+              />
+              <Input
+                value={linkForm.backgroundColor}
+                onChange={(e) =>
+                  setLinkForm((f) => ({
+                    ...f,
+                    backgroundColor: e.target.value,
+                  }))
+                }
+                placeholder="#333"
+              />
+            </div>
+          </FormGroup>
+        </FormGrid>
+        <BtnGroup>
+          <BtnPrimary type="submit">
+            {editingLink ? "Update" : "Add"} Link
+          </BtnPrimary>
+          {editingLink && (
+            <BtnGhost
+              type="button"
+              onClick={() => {
+                setEditingLink(null);
+                setLinkForm({
+                  name: "",
+                  link: "",
+                  fontAwesomeIcon: "",
+                  backgroundColor: "#333",
+                });
+              }}
+            >
+              Cancel
+            </BtnGhost>
+          )}
+        </BtnGroup>
+      </FormCard>
 
-      <h3>Skills (JSON)</h3>
-      <p style={{ color: "#666", fontSize: 12 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        {socialLinks.map((s) => (
+          <ItemCard key={s.id}>
+            <ItemCardBody>
+              <ItemCardHeader>
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <IconPreview
+                    style={{ background: s.backgroundColor || "#333" }}
+                  >
+                    {s.fontAwesomeIcon ? (
+                      <i
+                        className={`fab ${s.fontAwesomeIcon}`}
+                        style={{ fontSize: "1.1rem" }}
+                      />
+                    ) : (
+                      s.name?.charAt(0)
+                    )}
+                  </IconPreview>
+                  <div>
+                    <ItemCardTitle>{s.name}</ItemCardTitle>
+                    <ItemCardMeta>
+                      <a
+                        href={s.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "#3b82f6" }}
+                      >
+                        {s.link}
+                      </a>
+                    </ItemCardMeta>
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 6 }}>
+                  <BtnGhost
+                    onClick={() => {
+                      setEditingLink(s);
+                      setLinkForm({
+                        name: s.name,
+                        link: s.link,
+                        fontAwesomeIcon: s.fontAwesomeIcon || "",
+                        backgroundColor: s.backgroundColor || "#333",
+                      });
+                    }}
+                  >
+                    Edit
+                  </BtnGhost>
+                  <BtnDanger onClick={() => deleteLink(s.id)}>Delete</BtnDanger>
+                </div>
+              </ItemCardHeader>
+            </ItemCardBody>
+          </ItemCard>
+        ))}
+      </div>
+
+      <Divider />
+
+      <SectionTitle>Skills (JSON)</SectionTitle>
+      <p style={{ color: "#64748b", fontSize: "0.8rem", margin: "0 0 12px 0" }}>
         Edit the skills object. Must be valid JSON with a "data" array of skill
         categories.
       </p>
-      <form onSubmit={saveSkills}>
-        <textarea
-          style={{ ...css.input, minHeight: 300, fontFamily: "monospace" }}
+      <FormCard as="form" onSubmit={saveSkills}>
+        <TextArea
           value={skills}
           onChange={(e) => setSkills(e.target.value)}
           placeholder='{"data": [...]}'
+          style={{
+            minHeight: 300,
+            fontFamily: "monospace",
+            fontSize: "0.85rem",
+          }}
         />
-        <button type="submit" style={css.btn}>
-          Save Skills
-        </button>
-      </form>
-    </div>
+        <BtnGroup>
+          <BtnPrimary type="submit">Save Skills</BtnPrimary>
+        </BtnGroup>
+      </FormCard>
+    </Section>
   );
 }
